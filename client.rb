@@ -15,7 +15,6 @@ module Qwerty
         factory_data
         datatype_data
         source_data
-        Qwerty::Factory.new
       end
       process = engine.launch(factory)
       r = engine.wait_for(process)
