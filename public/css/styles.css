@@ -1,0 +1,15 @@
+body {
+  font-size: 40px;
+  color: #262626;
+  margin: 2em;
+}
+h1 {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 0;
+  margin: 0;
+}
+.main {
+  width: 640px;
+}

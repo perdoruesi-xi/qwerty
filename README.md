@@ -19,9 +19,14 @@ Rake Tasks
 
 The following Rake tasks are available:
 
-```rake server```	Start the development server
-```rake test:all```	Run all tests
-```rake test:unit```	Run unit tests
+Start the development server
+```rake server```	
+
+Run all tests
+```rake test:all```	
+
+Run unit tests
+```rake test:unit```
 
 Add Ons
 
