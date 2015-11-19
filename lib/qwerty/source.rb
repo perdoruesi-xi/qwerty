@@ -2,9 +2,7 @@
 require "ruote"
 
 module Qwerty
-  class Source
-    include Ruote::LocalParticipant
-
+  class Source < Ruote::Participant
     def consume(workitem)
       workitem.fields['source'] = {
         :font_size => '12px',

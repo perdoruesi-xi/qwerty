@@ -17,18 +17,16 @@ get "/" do
   # FIXME:
   engine = ruote
 
-  # factory do 
   line(:source)
   line(:assembly)
-  #end
-  
+
   pdef = conveyor do
     source_data
     assembly_data
   end
   # engine.noisy = true
-  process = ruote.launch(pdef)
-  r = ruote.wait_for(process)
+  process = @ruote.launch(pdef)
+  r = @ruote.wait_for(process)
   logger.info(r)
   JSON.pretty_generate(r)
 end
