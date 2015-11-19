@@ -20,13 +20,14 @@ get "/" do
   line(:source)
   line(:assembly)
 
-  pdef = conveyor do
+  pdef = conveyor(name: 'qwerty') do
     source_data
     assembly_data
   end
   # engine.noisy = true
   process = @ruote.launch(pdef)
   r = @ruote.wait_for(process)
+  
   logger.info(r)
   JSON.pretty_generate(r)
 end
