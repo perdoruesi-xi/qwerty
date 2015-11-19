@@ -16,7 +16,6 @@ use Rack::Csrf, :raise => true
 get "/" do
   # FIXME:
   engine = ruote
-
   line(:source)
   line(:assembly)
 
@@ -24,10 +23,10 @@ get "/" do
     source_data
     assembly_data
   end
-  # engine.noisy = true
+  
+  @ruote.noisy = true
+
   process = @ruote.launch(pdef)
   r = @ruote.wait_for(process)
-  
-  logger.info(r)
   JSON.pretty_generate(r)
 end
