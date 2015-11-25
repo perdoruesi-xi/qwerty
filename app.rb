@@ -13,20 +13,15 @@ require "sinatra/reloader" if development?
 use Rack::Session::Cookie, :secret => ""
 use Rack::Csrf, :raise => true
 
-get "/" do
-  # FIXME:
+get '/' do
   engine = ruote
-  line(:source)
-  line(:assembly)
-
-  pdef = conveyor(name: 'qwerty') do
-    source_data
-    assembly_data
-  end
-  
   @ruote.noisy = true
 
-  process = @ruote.launch(pdef)
-  r = @ruote.wait_for(process)
-  JSON.pretty_generate(r)
+  conveyor do
+    initial :source
+
+    line :draw do
+      line :crop
+    end
+  end
 end

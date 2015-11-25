@@ -2,15 +2,13 @@
 require "ruote"
 
 module Qwerty
-  class Assembly < Ruote::Participant
-    def consume(workitem)
-      workitem.fields['assembly'] = {
-        :text => 'Git LFS is now available for all repositories.',
-        :size => workitem.lookup('source.font_size')
+  class Draw < Ruote::Participant
+    def on_workitem
+      workitem.fields['draw'] = {
+        :top => '223px',
+        :bottom => workitem.lookup('source.font_size')
       }
-
-      puts "Assembly: #{workitem.lookup('assembly')}"
-      reply_to_engine(workitem)
+      reply
     end
   end
 end

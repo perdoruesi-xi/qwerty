@@ -3,13 +3,12 @@ require "ruote"
 
 module Qwerty
   class Source < Ruote::Participant
-    def consume(workitem)
+    def on_workitem
       workitem.fields['source'] = {
         :font_size => '12px',
         :font_family => 'Helvetica'
       }
-      puts "Source: #{workitem.fields['source']}"
-      reply_to_engine(workitem)
+      reply # work done, let flow resume
     end
   end
 end
