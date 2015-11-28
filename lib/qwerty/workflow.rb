@@ -4,7 +4,7 @@ require "ruote"
 module Qwerty
   module Workflow
     def line(class_name, position: nil, &block)
-      class_name = class_name.to_s
+      class_name = class_name.to_s if class_name.is_a?(Symbol)
       @constant_name ||= "Qwerty"
       @constant_name << "::#{class_name.camelize}"
       register_line(class_name, @constant_name, position)
