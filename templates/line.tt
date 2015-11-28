@@ -7,7 +7,7 @@ module Qwerty
       workitem.fields['<%= name.downcase %>'] = {
         :key => 'value'
       }
-      reply # work done, let flow resume
+      reply # Work done, let flow resume
     end
   end
 end
