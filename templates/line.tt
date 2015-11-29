@@ -1,6 +1,4 @@
 # lib/qwerty/<%= "#{name.downcase}.rb" %>
-require "ruote"
-
 module Qwerty
   class <%= name.capitalize %> < Ruote::Participant
     def on_workitem

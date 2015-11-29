@@ -1,5 +1,4 @@
 require "active_support/inflector"
-require "ruote"
 
 module Qwerty
   module Workflow

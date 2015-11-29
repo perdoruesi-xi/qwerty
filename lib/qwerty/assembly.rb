@@ -1,6 +1,3 @@
-# lib/qwerty/assembly.rb
-require "ruote"
-
 module Qwerty
   class Draw < Ruote::Participant
     def on_workitem
