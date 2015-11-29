@@ -6,4 +6,7 @@ body {
 .panel > .table-responsive{
   border-top: none!important;
 }
+#panel-group-l{
+  margin-bottom: 5px;
+}
 
