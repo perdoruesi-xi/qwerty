@@ -63,7 +63,7 @@ end
 ```
 
 Adds a line to app.rb directly after the conveyor block.
-```
+```ruby
 line(:draw)
 ```
 
@@ -106,7 +106,7 @@ module Qwerty
 end
 ```
 Injects a block of code into /app.rb
-```
+```ruby
 line(:image) do
   line(:draw)
 end
