@@ -1,10 +1,8 @@
 <% ruote["workitem"]["fields"].each do |line| %>
   <div class="panel-group" id="panel-group-l" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
+    <div class="panel panel-default" data-toggle="collapse" data-parent="#panel-group-l" href="#<%= line.first %>" aria-expanded="true" aria-controls="collapseOne">
       <div class="panel-heading">
-        <a role="button" data-toggle="collapse" data-parent="#panel-group-l" href="#<%= line.first %>" aria-expanded="true" aria-controls="collapseOne">
-          <%= line.first.capitalize %>
-        </a>
+        <%= line.first.capitalize %>
       </div>
       <div id="<%= line.first %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
