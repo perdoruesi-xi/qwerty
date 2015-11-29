@@ -16,6 +16,7 @@ class Line < Thor::Group
     path = subclass ? 'templates/subclass_line.tt' : 'templates/line.tt'
     template(path, "lib/qwerty/#{class_name}.rb")
     if subclass
+      find_in_source_paths("lib/qwerty/#{subclass.downcase}.rb")
       insert_into_file "app.rb", :after => "conveyor do" do 
         %(
     line(:#{subclass.downcase}) do
