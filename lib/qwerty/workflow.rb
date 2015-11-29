@@ -29,7 +29,7 @@ module Qwerty
       process = @ruote.launch(pdef)
       r = @ruote.wait_for(process)
 
-      JSON.pretty_generate(r)
+      erb :index, :locals => { ruote: r }
     end
 
     def assign_workflow(pdef_name, participant_list)

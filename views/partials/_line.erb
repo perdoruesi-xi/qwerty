@@ -1,0 +1,46 @@
+<% ruote["workitem"]["fields"].each do |line| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= line.first.capitalize %></div>
+    <div class="panel-body">
+      <p>Some default panel content here.</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% line[1].each do |key, value| %>
+            <tr>
+              <td>1</td>
+              <td><strong><%= key %></strong></td>
+              <td>
+                <% if value.is_a?(Hash) %>
+                  <table class="table table-bordered">
+                    <tr>
+                      <th>Key</th>
+                      <th>Value</th>
+                    </tr>
+                    <% value.each do |k, v| %>
+                      <tr>
+                        <td><%= k %></td>
+                        <td><%= v %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                <% else %>
+                  <%= value %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
