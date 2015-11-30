@@ -2,10 +2,6 @@
 
 Getting Started
 
-Replace the HTML in this file (located at /views/index.erb) with your own. Define new routes in app.rb.
-
-# Project Layout
-
 Gemfile	Your app's dependencies
 README.md	A sample README
 Rakefile	Basic app tasks
