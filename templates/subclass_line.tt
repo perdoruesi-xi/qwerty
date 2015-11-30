@@ -1,0 +1,13 @@
+# lib/qwerty/<%= "#{name.downcase}.rb" %>
+module Qwerty
+	class <%= options[:subclass].capitalize %>
+	  class <%= name.capitalize %> < Ruote::Participant
+	    def on_workitem
+	      workitem.fields['<%= options[:subclass].downcase %>']['<%= name.downcase %>'] = {
+	        :key => 'value'
+	      }
+	      reply # Work done, let flow resume
+	    end
+	  end
+	end
+end

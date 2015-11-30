@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <h2>Qwerty</h2>
+
+  <%= erb :'partials/_line', :locals => { :ruote => ruote } %>
+
+  <div class="">
+    <p>YAML format </p>
+    <pre><%= ruote.to_yaml %></pre>
+  </div>
+  <div class="main">
+    <footer>
+      <p>
+      <a href="https://github.com/mozaix/qwerty">Qwerty<a/>, a bot written in Ruby</a>.
+      </p>
+    </footer>
+  </div>
+</div>

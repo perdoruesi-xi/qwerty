@@ -1,0 +1,12 @@
+body {
+  font-size: 40px;
+  color: #262626;
+  margin: 2em;
+}
+.panel > .table-responsive{
+  border-top: none!important;
+}
+#panel-group-l{
+  margin-bottom: 5px;
+}
+
