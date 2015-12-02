@@ -1,7 +1,5 @@
 # Qwerty
 
-Getting Started
-
 Gemfile	Your app's dependencies
 README.md	A sample README
 Rakefile	Basic app tasks
