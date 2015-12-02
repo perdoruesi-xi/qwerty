@@ -1,27 +1,5 @@
 # Qwerty
 
-Gemfile	Your app's dependencies
-README.md	A sample README
-Rakefile	Basic app tasks
-app.rb	The main application file
-config.ru	Rackup file
-/helpers	Any helper files
-/public	Static assets (i.e. css, js, images)
-/test	Basic unit test and test helper support
-/views	Your app's views (not present if --tiny option was used)
-Rake Tasks
-
-The following Rake tasks are available:
-
-Start the development server
-```rake server```	
-
-Run all tests
-```rake test:all```	
-
-Run unit tests
-```rake test:unit```
-
 Add Ons
 
 Several add-ons are available that adjust the project structure to add support for things like i18n, code metrics, Heroku, etc. Run ```hoboken``` help from the command line for a complete list.
@@ -105,6 +83,9 @@ line(:image) do
   line(:draw)
 end
 ```
+
+Start the development server
+```rake server``` 
 
 ### Project Layout
 ```
