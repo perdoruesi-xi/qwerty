@@ -18,10 +18,10 @@ get '/' do
   @ruote.noisy = true
 
   conveyor do
-    initial :source
-
-    line :draw do
-      line :crop
+    line(:text) do 
+    	line :quran_simple do 
+        line :datatype 
+      end
     end
   end
 end
