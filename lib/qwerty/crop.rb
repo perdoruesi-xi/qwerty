@@ -1,3 +1,4 @@
+require_relative 'draw'
 module Qwerty
   class Draw
     class Crop < Ruote::Participant
