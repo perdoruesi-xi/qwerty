@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <h2>Qwerty</h2>
 
-  <%= erb :'partials/_line', :locals => { :ruote => ruote } %>
+  <% if ruote['workitem']['fields'] %>
+    <%= erb :'partials/_line', :locals => { :ruote => ruote } %>
+  <% end %>
 
   <div class="">
     <p>YAML format </p>
