@@ -41,7 +41,7 @@ line(:draw)
 
 We can see that by invoking the description of this new generator
 ``` 
-thor line help 
+thor help line 
 ```
 
 ```
