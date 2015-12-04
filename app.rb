@@ -3,7 +3,6 @@ require "sinatra"
 require "rack/csrf"
 require "ruote"
 require "json"
-
 Dir.glob(File.join("lib/qwerty", "**", "*.rb")).each do |klass|
   require_relative klass
 end

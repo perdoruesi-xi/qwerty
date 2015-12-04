@@ -3,7 +3,11 @@ require "sinatra"
 require "rack/csrf"
 require "ruote"
 require "json"
+<<<<<<< HEAD
 
+=======
+#
+>>>>>>> 8763e177f6c0997d0b66c7a3646352b6d4d7e6d2
 Dir.glob(File.join("lib/qwerty", "**", "*.rb")).each do |klass|
   require_relative klass
 end
@@ -18,10 +22,17 @@ get '/' do
   @ruote.noisy = true
 
   conveyor do
+<<<<<<< HEAD
     line(:text) do 
     	line :quran_simple do 
         line :datatype 
       end
+=======
+    initial :source
+
+    line :draw do
+      line :crop
+>>>>>>> 8763e177f6c0997d0b66c7a3646352b6d4d7e6d2
     end
   end
 end
