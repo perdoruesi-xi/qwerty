@@ -18,14 +18,10 @@ get '/' do
   @ruote.noisy = true
 
   conveyor do
-    line(:help)
-        
     line(:text) do 
     	line :quran_simple do 
         line :datatype 
       end
-      line :hadith
     end
-    line :style    
   end
 end

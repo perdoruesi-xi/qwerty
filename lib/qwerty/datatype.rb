@@ -9,7 +9,7 @@ module Qwerty
 
         def on_workitem
           language = workitem.fields['text']['quran_simple']['languageList']
-           text = Hash.new
+          text = Hash.new
           language.each_key do |key| 
             text = read_file(language[key]['dir'], key)
           end
