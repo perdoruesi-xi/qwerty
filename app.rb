@@ -20,8 +20,9 @@ get '/' do
   conveyor do
     initial :source
 
-    line :draw do
-      line :crop
+    line(:natural) do
+      line(:bayes)
+      line(:lsi)
     end
   end
 end
