@@ -3,6 +3,8 @@ require "sinatra"
 require "rack/csrf"
 require "ruote"
 require "json"
+require_relative 'workflow'
+
 Dir.glob(File.join("lib/qwerty", "**", "*.rb")).each do |klass|
   require_relative klass
 end
@@ -17,7 +19,9 @@ get '/' do
   @ruote.noisy = true
 
   conveyor do
-    line(:help)
+    initial :source
+
+  
         
     line(:text) do 
     	line :quran_simple do 
@@ -25,6 +29,10 @@ get '/' do
       end
       line :hadith
     end
-    line :style    
+    line :style
+
+      line(:classifier) do
+      line(:bayes)
+    end 
   end
 end

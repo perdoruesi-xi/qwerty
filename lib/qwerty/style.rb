@@ -26,7 +26,7 @@ module Qwerty
     end
 
     def set_text_deco(str)
-      str.gsub!("Allahu", "_____Allahu_____")
+      str.gsub("Allahu", "_____Allahu_____")
     end
   end
 end
