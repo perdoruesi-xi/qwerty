@@ -20,9 +20,8 @@ get '/' do
   conveyor do
     initial :source
 
-    line(:natural) do
+    line(:classifier) do
       line(:bayes)
-      line(:lsi)
     end
   end
 end
