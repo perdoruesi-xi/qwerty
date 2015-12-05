@@ -98,6 +98,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   activesupport (~> 4.1.4)
@@ -115,6 +116,3 @@ DEPENDENCIES
   textoken
   thin (~> 1.5.1)
   thor
-
-BUNDLED WITH
-   1.10.6

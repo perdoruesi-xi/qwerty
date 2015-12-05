@@ -1,12 +1,13 @@
 require 'classifier-reborn'
 require 'textoken'
 require './lib/qwerty/classifier'
+require_relative 'config'
 
 module Qwerty
   class Classifier
     class Bayes < Ruote::Participant
       def on_workitem
-        text = workitem.lookup('text.quran_simple.verse.en_ahmedali')
+        text = workitem.lookup('text.content')
         workitem.fields['classifier']['bayes'] = {
           :text => text,
           :classifications => score(text),

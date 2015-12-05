@@ -23,3 +23,6 @@ quran_simple:
   native_name: English
   dir: ./lib/qwerty/lng_trsl/en_ahmedali
   is_pack: 1
+
+hadith: 
+ dir: ./lib/qwerty/lng_trsl/sq_hadith

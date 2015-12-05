@@ -6,7 +6,7 @@ module Qwerty
          :font_size => set_font_size(workitem.fields['text']['hadith_simple']['num_char']),
          :font_style => "italic",
          :font_weight => "bold",
-         :text_decoration => set_text_deco(workitem.fields['text']['hadith_simple']['albanian_tr']),
+         :text_decoration => "decoration",
          :default => 0
       }
       reply # work done, let flow resume
@@ -23,10 +23,6 @@ module Qwerty
       else
         "10px"
       end
-    end
-
-    def set_text_deco(str)
-      str.gsub("Allahu", "_____Allahu_____")
     end
   end
 end

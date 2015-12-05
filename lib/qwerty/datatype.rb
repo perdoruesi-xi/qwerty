@@ -1,5 +1,6 @@
 require "ruote"
 require_relative "quran_simple"
+require_relative "config"
 
 module Qwerty 
  class Text
@@ -8,9 +9,10 @@ module Qwerty
        attr_accessor :collection, :row, :random_num
 
        def on_workitem
-         @language = workitem.fields['text']['quran_simple']['languageList']
-         workitem.fields['text']['quran_simple'].merge!(ayah)
-         reply
+             @language = workitem.lookup('text.quran_simple.languageList')
+             workitem.fields['text']['quran_simple'].merge!(ayah)
+             workitem.fields['text']['content'] = row[:verse]['en_ahmedali']
+           reply
        end 
        
        def ayah
