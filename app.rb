@@ -31,5 +31,7 @@ get '/' do
     line :classifier do
       line :bayes
     end 
+
+    line :image
   end
 end

@@ -12,8 +12,8 @@ module Qwerty
         workitem.fields['classifier']['bayes'] = {
           :text => text,
           :classifications => score(text),
-          :score => classify(text),
-          :analizy => text_analize(text,"hyperlink","hyphenated_word","number","dates")
+          :score => classify(text)
+          # :analizy => text_analize(text,"hyperlink","hyphenated_word","number","dates")
         }
         reply
       end
