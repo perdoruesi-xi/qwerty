@@ -1,10 +1,9 @@
-require 'awesome_print'
 require 'rmagick'
-require 'date'
+
 module Qwerty
   class Image < Ruote::Participant
     attr_reader :surah, :ayah, :verse, :source
-   include Magick
+    include Magick
 
      def on_workitem
       @surah = workitem.lookup("text.quran_simple.surah")
