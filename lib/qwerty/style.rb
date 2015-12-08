@@ -3,13 +3,13 @@ module Qwerty
     def on_workitem
       workitem.fields[:style] = {
          :font => 'Arial',
-         :font_size => set_font_size(workitem.fields['text']['hadith_simple']['num_char']),
+         :font_size => set_font_size(workitem.lookup("text.hadith_simple.num_char")),
          :font_style => "italic",
          :font_weight => "bold",
          :text_decoration => "decoration",
          :default => 0
       }
-      reply # work done, let flow resume
+      reply
     end
 
     def set_font_size(text_length)

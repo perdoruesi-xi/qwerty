@@ -8,7 +8,7 @@ module Qwerty
               :source => "http://tanzil.info",
               :languageList => Qwerty.configuration.language_list
             } 
-          reply # work done, let flow resume
+          reply 
       end
     end
   end

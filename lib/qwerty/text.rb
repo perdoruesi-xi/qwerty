@@ -6,7 +6,7 @@ module Qwerty
          :type => "quran",
          :default => 0
       }
-      reply # work done, let flow resume
+      reply
     end
   end
 end

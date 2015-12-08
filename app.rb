@@ -4,7 +4,6 @@ require "rack/csrf"
 require "ruote"
 require "json"
 require_relative 'workflow'
-require_relative 'workflow'
 Dir.glob(File.join("lib/qwerty", "**", "*.rb")).each do |klass|
   require_relative klass
 end
@@ -26,7 +25,6 @@ get '/' do
         line :datatype 
       end
     end
-    # line :style
 
     line :classifier do
       line :bayes

@@ -11,11 +11,11 @@ module Qwerty
       @verse = workitem.lookup("text.quran_simple.verse.sq_nahi")
    
       workitem.fields['image'] = { result: image_generate }
-      reply # work done, let flow resume
+      reply 
     end
 
    def image_generate
-     @source = Magick::Image.read("./lib/qwerty/images/background-#{rand(1..5)}.jpg").first
+     @source = Magick::Image.read("./lib/qwerty/images/background-#{image_name}.jpg").first
      generate_verse
      generate_syrah_ayah
      create_image          
@@ -49,9 +49,7 @@ module Qwerty
    end
 
    def create_image
-     timestamp = ::Date.today.to_time.to_i
-     file_name = "sq_nahi" #ME HEK
-     source.write("./lib/qwerty/generate_images/"+"#{surah}.#{ayah}.#{file_name}.jpg")
+     source.write("./lib/qwerty/generate_images/"+"#{surah}.#{ayah}.jpg")
    end
   end
 end

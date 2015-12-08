@@ -12,8 +12,8 @@ module Qwerty
         workitem.fields['classifier']['bayes'] = {
           :text => text,
           :classifications => score(text),
-          :score => classify(text)
-          # :analizy => text_analize(text,"hyperlink","hyphenated_word","number","dates")
+          :score => classify(text),
+          :analizy => text_analize(text,"hyperlink","hyphenated_word","number","date")
         }
         reply
       end
@@ -52,8 +52,6 @@ module Qwerty
         analizelist.each do |i|
           if analizer.has_key?(i)
             analize[i] = analizer[i]
-          else
-            analize[i] = "i is not to anilizelist"
           end
         end
         return analize
