@@ -1,6 +1,7 @@
 require 'classifier-reborn'
 require 'textoken'
 require './lib/qwerty/classifier'
+require 'word_count_analyzer'
 require_relative 'config'
 
 module Qwerty
@@ -11,7 +12,8 @@ module Qwerty
         workitem.fields['classifier']['bayes'] = {
           :text => text,
           :classifications => score(text),
-          :score => classify(text)
+          :score => classify(text),
+          :analizy => text_analize(text,"hyperlink","hyphenated_word","number","dates")
         }
         reply
       end
@@ -42,6 +44,21 @@ module Qwerty
       def word_tokenizer(word)
         Textoken(word, exclude: 'punctuations, numerics', more_than: 3).words
       end
+
+      def text_analize(text, *analizelist)
+        analizer = WordCountAnalyzer::Analyzer.new(text: text).analyze
+        analize = Hash.new      
+
+        analizelist.each do |i|
+          if analizer.has_key?(i)
+            analize[i] = analizer[i]
+          else
+            analize[i] = "i is not to anilizelist"
+          end
+        end
+        return analize
+      end
+
     end
   end
 end

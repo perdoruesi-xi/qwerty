@@ -11,6 +11,7 @@ gem "thor"
 gem "fast-stemmer"
 gem "classifier-reborn"
 gem "textoken"
+gem "word_count_analyzer"
 
 group :development do
   gem "rake",             "~> 10.1.0"
