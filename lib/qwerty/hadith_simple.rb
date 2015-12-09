@@ -13,7 +13,7 @@ module Qwerty
      end
 
      def on_workitem
-       workitem.fields['text']['hadith'] = {
+       workitem.fields['text']['hadith_simple'] = {
          :source => "http://tezkije.com",
          :book => "Sahih al-Bukhari",
          :num_char => num_char,

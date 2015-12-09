@@ -19,17 +19,16 @@ get '/' do
 
   conveyor do  
     line :text do 
-    line :hadith_simple
-
-    	line :quran_simple do 
-        line :datatype 
-      end
+      line set_text
     end
 
     line :classifier do
       line :bayes
     end 
 
-    line :image
+    line :image do
+      line :quran_image 
+      # line :hadith_image
+    end
   end
 end
