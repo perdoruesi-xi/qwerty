@@ -26,6 +26,7 @@ module Qwerty
      def generate_verse
        render_text = verse
        text = Magick::Draw.new
+       
 
        text.annotate(source, 0,0,0, 0, render_text) do 
           self.gravity = Magick::CenterGravity
