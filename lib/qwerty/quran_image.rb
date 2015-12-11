@@ -24,7 +24,7 @@ module Qwerty
      end
      
      def generate_verse
-       render_text = verse
+       render_text = edit_text(verse)
        text = Magick::Draw.new
        
 
@@ -55,7 +55,21 @@ module Qwerty
        source.write("./lib/qwerty/generate_images/"+"#{surah}.#{ayah}.jpg")
        "#{surah}.#{ayah}.jpg"
      end
+
+     def edit_text(line)
+      if line.length > 80
+        (95..115).to_a.each do |i|
+          if line[i] == " "
+            line[i] = "\\n"
+            return line
+          end
+        end
+        
+       else 
+         return line
+      end
+     end
+
     end
   end
 end
-

@@ -12,7 +12,6 @@ gem "fast-stemmer"
 gem "classifier-reborn"
 gem "textoken"
 gem "word_count_analyzer"
-gem 'awesome_print'
 gem 'rmagick'
 
 

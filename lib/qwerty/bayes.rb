@@ -13,7 +13,7 @@ module Qwerty
           :text => text,
           :classifications => score(text),
           :score => classify(text)
-          :analizy => text_analize(text,"hyperlink","hyphenated_word","number","date")
+          # :analizy => text_analize(text,"hyperlink","hyphenated_word","number","date")
         }
         reply
       end

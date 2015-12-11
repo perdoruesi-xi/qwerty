@@ -26,7 +26,7 @@ module Qwerty
      def generate_hadith
        text = Magick::Draw.new
 
-       text.annotate(source, 0,0,0, -10, hadith) do 
+       text.annotate(source, 0,0,0, -10, edit_text(hadith)) do 
           self.gravity = Magick::CenterGravity
           self.fill = "#660029"
           self.font = 'fonts/generic-family.ttc'
@@ -52,6 +52,20 @@ module Qwerty
      def create_image
        source.write("./lib/qwerty/generate_images/"+"#{num_hadith}-hadith.jpg")
        "#{num_hadith}-hadith.jpg"
+     end
+
+      def edit_text(line)
+      if line.length > 80
+        (95..115).to_a.each do |i|
+          if line[i] == " "
+            line[i] = "\\n"
+            return line
+          end
+        end
+        
+       else 
+         return line
+      end
      end
     end
   end
