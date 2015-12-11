@@ -51,10 +51,6 @@ module Qwerty
     def ruote
       @ruote ||= Ruote::Engine.new(Ruote::Worker.new(Ruote::HashStorage.new()))
     end
-
-    def set_text
-      Qwerty.configuration.type
-    end
   end
 end
 # Helper methods can be separately defined in a module

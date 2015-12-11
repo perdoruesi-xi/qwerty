@@ -8,14 +8,6 @@ gem "ruote",     "~> 2.3.0.3"
 gem "activesupport", "~> 4.1.4"
 gem "thor"
 
-gem "fast-stemmer"
-gem "classifier-reborn"
-gem "textoken"
-gem "word_count_analyzer"
-gem 'rmagick'
-
-
-
 group :development do
   gem "rake",             "~> 10.1.0"
   gem "sinatra-reloader", "~> 1.0"
