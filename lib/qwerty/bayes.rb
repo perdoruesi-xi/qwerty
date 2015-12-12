@@ -6,7 +6,7 @@ module Qwerty
   class Classifier
     class Bayes < Ruote::Participant
       def on_workitem
-        text = workitem.lookup('source.verse')
+        text = workitem.lookup('source.text')
         workitem.fields['classifier']['bayes'] = {
           :text => text,
           :classifications => score(text),
@@ -39,7 +39,11 @@ module Qwerty
       end
 
       def word_tokenizer(word)
-        Textoken(word, exclude: 'punctuations, numerics', more_than: 3).words
+        Textoken(
+          word,
+          exclude: 'punctuations, numerics', 
+          more_than: 4
+        ).words
       end
     end
   end

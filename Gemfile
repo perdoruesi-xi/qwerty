@@ -10,6 +10,7 @@ gem "thor"
 
 gem "fast-stemmer"
 gem "classifier-reborn"
+gem "ots"
 gem "textoken"
 
 group :development do

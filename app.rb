@@ -22,6 +22,7 @@ get '/' do
 
     line(:classifier) do
       line(:bayes)
+      line(:ots)
     end
   end
 end
