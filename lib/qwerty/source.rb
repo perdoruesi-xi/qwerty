@@ -2,11 +2,9 @@ module Qwerty
   class Source < Ruote::Participant
     def on_workitem
       workitem.fields['source'] = {
-        :font_size => '12px',
-        :font_family => 'Helvetica',
-        :font_weight => '400' 
+        :text => "Visit the sick, feed the hungry, free the captive."
       }
-      reply # work done, let flow resume
+      reply
     end
   end
 end

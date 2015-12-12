@@ -2,7 +2,6 @@ class Line < Thor::Group
   include Thor::Actions
 
   argument :name
-
   class_option :subclass, :aliases => "-s"
   class_option :test_framework, :default => :test_unit
 
@@ -12,20 +11,22 @@ class Line < Thor::Group
 
   def create_lib_file
     class_name = name.downcase
-    subclass = options[:subclass]
-    path = subclass ? 'templates/subclass_line.tt' : 'templates/line.tt'
-    template(path, "lib/qwerty/#{class_name}.rb")
-    if subclass
-      find_in_source_paths("lib/qwerty/#{subclass.downcase}.rb")
-      insert_into_file "app.rb", :after => "conveyor do" do 
+    path = options[:subclass] ? "templates/subclass_line.tt" : "templates/line.tt"
+
+    if options[:subclass]
+      subclass = options[:subclass].downcase
+      find_in_source_paths("lib/qwerty/#{subclass}.rb")
+      template(path, "lib/qwerty/#{subclass}/#{class_name}.rb")
+      insert_into_file "app.rb", :after => "conveyor do" do
         %(
-    line(:#{subclass.downcase}) do
+    line(:#{subclass}) do
       line(:#{class_name})
     end
         )
       end
     else
-      insert_into_file "app.rb", :after => "conveyor do" do 
+      template(path, "lib/qwerty/#{class_name}.rb")
+      insert_into_file "app.rb", :after => "conveyor do" do
         %(
     line(:#{class_name})
         )
