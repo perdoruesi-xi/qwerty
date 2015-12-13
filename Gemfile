@@ -12,6 +12,7 @@ gem "fast-stemmer"
 gem "classifier-reborn"
 gem "ots"
 gem "textoken"
+gem "lda-ruby"
 
 group :development do
   gem "rake",             "~> 10.1.0"

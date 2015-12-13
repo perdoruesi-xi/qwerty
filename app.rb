@@ -21,8 +21,9 @@ get '/' do
     initial :source
 
     line(:classifier) do
-      line(:bayes)
       line(:ots)
+      line(:lda)
+      line(:bayes)
     end
   end
 end
