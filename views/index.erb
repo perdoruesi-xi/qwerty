@@ -5,10 +5,10 @@
     <%= erb :'partials/_line', :locals => { :ruote => ruote } %>
   <% end %>
 
-  <div class="">
-    <p>YAML format </p>
-    <pre><%= ruote.to_yaml %></pre>
-  </div>
+  <span>
+    <p>JSON format </p>
+    <pre><%= JSON.pretty_generate(ruote) %></pre>
+  </span>
   <div class="main">
     <footer>
       <p>
