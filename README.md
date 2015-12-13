@@ -61,7 +61,7 @@ Options:
 Places a file into lib which contains the specified code.
 
 ```ruby
-# lib/qwerty/draw.rb
+# lib/qwerty/image/draw.rb
 require "ruote"
 
 module Qwerty
