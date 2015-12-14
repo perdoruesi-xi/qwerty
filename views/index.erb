@@ -1,10 +1,10 @@
 <div class="container-fluid">
-  <h2>Qwerty</h2>
-
+  <header>
+    <p>Sholes and Glidden typewriter</p>
+  </header>
   <% if ruote['workitem'] && ruote['workitem']['fields'] %>
     <%= erb :'partials/_line', :locals => { :ruote => ruote } %>
   <% end %>
-
   <span>
     <p>JSON format </p>
     <pre><%= JSON.pretty_generate(ruote) %></pre>
