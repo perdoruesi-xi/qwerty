@@ -1,10 +1,11 @@
 require 'ots'
+require './lib/qwerty/classifier'
 
 module Qwerty
   class Classifier
     class Ots < Ruote::Participant
       def on_workitem
-        text = workitem.lookup('source.text')
+        text = workitem.fields['text']['content'] 
         workitem.fields['classifier']['ots'] = {
           :text => text,
           :ots => summary(text)
