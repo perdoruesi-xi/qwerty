@@ -12,7 +12,7 @@ module Qwerty
           :languageList => Qwerty.configuration.language_list,
         }.merge! language_definition
         workitem.fields['text']['content'] = row[:verse][:en_ahmedali]
-        workitem.fields['text']['source'] = "KUR'AN #{row[:ayah]}:#{row[:surah]}"
+        workitem.fields['text']['source'] = "KUR'AN-#{row[:ayah]}:#{row[:surah]}"
         reply
       end
 
