@@ -1,0 +1,28 @@
+type: quran_simple
+quran_simple:
+ de_aburida:
+  english_name: German
+  native_name: Deutch
+  dir: lib/qwerty/lng_trsl/de_aburida
+  is_pack: 1
+
+ sq_nahi:
+  english_name: Albanian
+  native_name: Shqip
+  dir: lib/qwerty/lng_trsl/sq_nahi
+  is_pack: 1
+
+ ar_jalalayn:
+  english_name: Arabic
+  native_name: العربية
+  dir: lib/qwerty/lng_trsl/ar_jalalayn
+  is_pack: 1
+
+ en_ahmedali:
+  english_name: English
+  native_name: English
+  dir: lib/qwerty/lng_trsl/en_ahmedali
+  is_pack: 1
+
+hadith: 
+ dir: lib/qwerty/lng_trsl/sq_hadith

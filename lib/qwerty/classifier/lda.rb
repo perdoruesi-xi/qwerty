@@ -1,10 +1,11 @@
 require 'lda-ruby'
+require './lib/qwerty/classifier'
 
 module Qwerty
   class Classifier
     class Lda < Ruote::Participant
       def on_workitem
-        text = workitem.lookup('source.text')
+        text = workitem.fields['text']['content'] 
         workitem.fields['classifier']['lda'] = {
           :lda => lda(text)
         }
