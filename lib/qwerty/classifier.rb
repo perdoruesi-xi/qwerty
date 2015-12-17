@@ -1,4 +1,3 @@
-require 'ruote'
 module Qwerty
   class Classifier < Ruote::Participant
     def on_workitem

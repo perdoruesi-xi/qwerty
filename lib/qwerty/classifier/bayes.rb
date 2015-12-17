@@ -1,14 +1,12 @@
 require 'classifier-reborn'
 require 'textoken'
 require './lib/qwerty/classifier'
-require './lib/qwerty/text'
-require './lib/qwerty/config'
 
 module Qwerty
   class Classifier
     class Bayes < Ruote::Participant
       def on_workitem
-        text = workitem.fields['text']['content'] 
+        text = workitem.lookup('source.text')
         workitem.fields['classifier']['bayes'] = {
           :text => text,
           :classify => train_classifier(text),
@@ -18,7 +16,6 @@ module Qwerty
       end
 
       def train_classifier(text)
-
         training_set = word_tokenizer(text)
         bayes = bayes(training_set)
         training_set.each do |t|
