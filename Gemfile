@@ -7,13 +7,12 @@ gem "thin",      "~> 1.5.1"
 gem "ruote",     "~> 2.3.0.3"
 gem "activesupport", "~> 4.1.4"
 gem "thor"
+
 gem "fast-stemmer"
 gem "classifier-reborn"
-gem "textoken"
-gem "word_count_analyzer"
-gem 'rmagick'
-gem "lda-ruby"
 gem "ots"
+gem "textoken"
+gem "lda-ruby"
 
 group :development do
   gem "rake",             "~> 10.1.0"
