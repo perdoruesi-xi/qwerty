@@ -7,6 +7,7 @@ gem "thin",      "~> 1.5.1"
 gem "ruote",     "~> 2.3.0.3"
 gem "activesupport", "~> 4.1.4"
 gem "thor"
+gem "sinatra-flash"
 
 gem "fast-stemmer"
 gem "classifier-reborn"
