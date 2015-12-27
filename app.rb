@@ -12,6 +12,7 @@ require "sinatra/reloader" if development?
 
 use Rack::Session::Cookie, :secret => ""
 use Rack::Csrf, :raise => true
+use Qwerty::TrainClassifier
 
 get '/' do
   engine = ruote

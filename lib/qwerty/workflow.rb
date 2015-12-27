@@ -26,9 +26,9 @@ module Qwerty
 
       pdef = assign_workflow(pdef_name, participant_list)
       process = @ruote.launch(pdef)
-      r = @ruote.wait_for(process)
+      ruote = @ruote.wait_for(process)
 
-      erb :index, :locals => { ruote: r }
+      erb :index, :locals => { ruote: ruote }
     end
 
     def assign_workflow(pdef_name, participant_list)
