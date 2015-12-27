@@ -16,16 +16,16 @@ module Qwerty
       end
 
       def train_classifier(text, opts={})
-        training_set = if opts[:keywords]
-          opts.fetch(:keywords)
-        else
-          word_tokenizer(text)
-        end
+        training_set = if opts[:tags]
+                         opts.fetch(:tags)
+                       else
+                         word_tokenizer(text)
+                       end
         bayes = bayes(training_set)
         training_set.each do |t|
           bayes.train(t, text)
         end
-        snapshot = dump_to_file("trained.dat", bayes)
+        dump_to_file("trained.dat", bayes)
         predict(text)
       end
 
@@ -56,6 +56,7 @@ module Qwerty
       def bayes(words)
         @bayes ||= ClassifierReborn::Bayes.new(
           words,
+          auto_categorize: true,
           enable_threshold: true,
           threshold: -10.0
         )
