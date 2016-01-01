@@ -19,7 +19,11 @@ get '/' do
   @ruote.noisy = true
 
   conveyor do
-    initial :source
+    line(:text) do
+      line(:quran)
+    end
+
+    initial :text
 
     line(:classifier) do
       line(:ots)

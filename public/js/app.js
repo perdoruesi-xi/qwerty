@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $(".js-keywords").select2({
+  $(".js-tagged_words").select2({
     tags: true,
     tokenSeparators: [',', ' ']
   });

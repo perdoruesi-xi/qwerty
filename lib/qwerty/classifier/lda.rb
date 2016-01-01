@@ -4,7 +4,7 @@ module Qwerty
   class Classifier
     class Lda < Ruote::Participant
       def on_workitem
-        text = workitem.lookup('source.text')
+        text = workitem.lookup('text.quran.verse.en_sahih')
         workitem.fields['classifier']['lda'] = {
           :lda => lda(text)
         }

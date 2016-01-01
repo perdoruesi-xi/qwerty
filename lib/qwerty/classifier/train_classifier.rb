@@ -9,7 +9,7 @@ module Qwerty
 
     get "/train_set" do
       text = "Visit the sick, feed the hungry, free the captive."
-      tagged_words = ots.summary(text)[:tags]
+      tagged_words = ots.summary(text)[:topics]
       erb :train_classifier, locals: { text: text, tags: tagged_words}
     end
 
