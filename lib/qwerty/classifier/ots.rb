@@ -4,7 +4,7 @@ module Qwerty
   class Classifier
     class Ots < Ruote::Participant
       def on_workitem
-        text = workitem.lookup('text.quran.verse.en_sahih')
+        text = workitem.lookup('text.quran.verse.en_sahih')["verse"]
         workitem.fields['classifier']['ots'] = {
           :text => text,
           :ots => summary(text)
