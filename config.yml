@@ -1,0 +1,11 @@
+type: quran
+language_list:
+  ar_jalalayn:
+    english_name: English
+    native_name:  Ελληνικά
+    dir:
+  sq_nahi:
+    english_name: Shqip
+    native_name: العربية
+    dir:
+

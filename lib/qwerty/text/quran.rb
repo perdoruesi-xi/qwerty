@@ -1,10 +1,12 @@
-require './lib/qwerty/text'
-require 'pry'
+require "./lib/qwerty/text"
+require "sinatra/base"
+require "pry"
 
 module Qwerty
   class Text
     class Quran < Ruote::Participant
       def on_workitem
+        binding.pry
         workitem.fields['text']['quran'] = {
           :verse => find_by_surah_num_and_ayah_num(2, 3),
           :source => "http://tanzil.info",
@@ -28,8 +30,8 @@ module Qwerty
 
         quran_transliterations.each do |t|
           trans_name = t.split(/\//).last
-          content = read_from_text_file(t)
-          @collection[trans_name] = content
+          data = read_from_text_file(t)
+          @collection[trans_name] = data
         end
         parse_quran_trans(surah, ayah)
       end
