@@ -5,6 +5,10 @@ require "rack/csrf"
 require "ruote"
 require "json"
 require "sinatra/reloader" if development?
+require "./lib/qwerty"
+
+# Load application configuration from YAML file.
+config_file "./config.yml"
 
 Dir.glob(File.join("lib/qwerty", "**", "*.rb")).each do |klass|
   require_relative klass
@@ -13,9 +17,6 @@ end
 use Rack::Session::Cookie, :secret => ""
 use Rack::Csrf, :raise => true
 use Qwerty::TrainClassifier
-
-# Load application configuration from YAML file.
-config_file "./config.yml"
 
 get '/' do
   engine = ruote

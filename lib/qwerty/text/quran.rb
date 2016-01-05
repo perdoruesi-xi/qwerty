@@ -1,5 +1,4 @@
 require "./lib/qwerty/text"
-require "sinatra/base"
 require "pry"
 
 module Qwerty
@@ -7,11 +6,15 @@ module Qwerty
     class Quran < Ruote::Participant
       def on_workitem
         workitem.fields['text']['quran'] = {
-          :verse => find_by_surah_num_and_ayah_num(2, 3),
+          :verse => generate_random_ayah,
           :source => "http://tanzil.info",
           :language_list => {}
         }
         reply
+      end
+
+      def generate_random_ayah
+        find_by_surah_num_and_ayah_num(rand(10), rand(20))
       end
 
       # :ar_jalalayn => {
@@ -55,6 +58,13 @@ module Qwerty
         end
         trans_list
       end
+
+      private 
+
+        # Temporary workaround
+        def configuration
+          @configuration ||= Sinatra::Application.settings
+        end
     end
   end
 end
