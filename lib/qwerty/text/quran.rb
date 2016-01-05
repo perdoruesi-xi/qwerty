@@ -6,7 +6,6 @@ module Qwerty
   class Text
     class Quran < Ruote::Participant
       def on_workitem
-        binding.pry
         workitem.fields['text']['quran'] = {
           :verse => find_by_surah_num_and_ayah_num(2, 3),
           :source => "http://tanzil.info",
