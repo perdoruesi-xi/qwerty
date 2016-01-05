@@ -29,7 +29,6 @@ module Qwerty
         quran_transliterations.each do |t|
           trans_name = t.split(/\//).last
           content = read_from_text_file(t)
-          binding.pry
           @collection[trans_name] = content
         end
         parse_quran_trans(surah, ayah)
