@@ -8,8 +8,7 @@ module Qwerty
     set :root, "./"
 
     get "/train_set" do
-      text = "Visit the sick, feed the hungry, free the captive."
-      tagged_words = ots.summary(text)[:topics]
+      tagged_words = ots.summary(get_text)[:topics]
       erb :train_classifier, locals: { text: text, tags: tagged_words}
     end
 
@@ -23,6 +22,12 @@ module Qwerty
       logger.info "#{train_classifier}"
       flash[:success] = train_classifier
       redirect "/train_set"
+    end
+
+    def get_text
+      text = Qwerty::Text::Quran.new
+      text.generate_random_ayah
+      text.fetch("en_sahih")
     end
 
     def ots

@@ -6,7 +6,7 @@ module Qwerty
   class Classifier
     class Bayes < Ruote::Participant
       def on_workitem
-        text = workitem.lookup('text.quran.verse.en_sahih')["verse"]
+        text = workitem.lookup('text.quran.verse.en_sahih')
         workitem.fields['classifier']['bayes'] = {
           :text => text,
           :predict => train_classifier(text),

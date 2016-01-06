@@ -6,9 +6,11 @@ module Qwerty
     class Quran < Ruote::Participant
       def on_workitem
         workitem.fields['text']['quran'] = {
+          :surah => 2,
+          :ayah => 3,
           :verse => generate_random_ayah,
-          :source => "http://tanzil.info",
-          :language_list => {}
+          :source => trans_source,
+          :language_list => language_list
         }
         reply
       end
@@ -44,19 +46,34 @@ module Qwerty
       def parse_quran_trans(surah, ayah)
         trans_list ||= {}
         @collection.each do |key, v|
-          trans_list[key] = v.detect { |r| r[:surah] == surah.to_s && r[:ayah] == ayah.to_s }
+          verse_t = v.detect { |r| r[:surah] == surah.to_s && r[:ayah] == ayah.to_s }
+          if verse_t.any?
+            verse_t = verse_t.delete(:verse)
+            trans_list[key] = verse_t
+          end
         end
         trans_list
       end
 
+      def quran_transliterations
+        if config.respond_to?(:quran)
+          language_list.collect { |_, trans| trans.fetch("dir") }
+        end
+      end
+
+      def trans_source
+        language_list.fetch("en_sahih", {})["source"]
+      end
+
+      def language_list
+        config.quran.fetch("language_list")
+      end
+
       private
 
-        def quran_transliterations
-          config = Sinatra::Application.settings
-          if config.respond_to?(:quran)
-            config.quran["language_list"].map { |key, value| value["dir"] }
-          end
-        end
+      def config
+        @config ||= Sinatra::Application.settings
+      end
     end
   end
 end

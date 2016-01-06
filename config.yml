@@ -8,14 +8,14 @@ quran:
       language: German
       ID: de.aburida
       last_updated: August 19, 2011
-      source: Tanzil.new
+      source: Tanzil.net
       dir: lib/qwerty/trans/de_aburida
     en_sahih:
       english_name: Sahen International
       translator: Saheeh International
       language: English
       last_updated: April 24, 2011
-      source: Tanzil.new
+      source: Tanzil.net
       dir: lib/qwerty/trans/en_sahih
     tr_yildirim:
       english_name: Çeviriyazı
@@ -23,5 +23,5 @@ quran:
       language: Turkish
       ID: tr.transliteration
       last_updated: September 15, 2010
-      source: Tanzil.new
+      source: Tanzil.net
       dir: lib/qwerty/trans/tr_yildirim
