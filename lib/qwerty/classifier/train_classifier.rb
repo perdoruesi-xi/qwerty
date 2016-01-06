@@ -8,8 +8,8 @@ module Qwerty
     set :root, "./"
 
     get "/train_set" do
-      tagged_words = ots.summary(get_text)[:topics]
-      erb :train_classifier, locals: { text: get_text, tags: tagged_words}
+      tagged_words = ots.summary(text)[:topics]
+      erb :train_classifier, locals: { text: text, tags: tagged_words}
     end
 
     post "/train_set/new" do
@@ -24,9 +24,10 @@ module Qwerty
       redirect "/train_set"
     end
 
-    def get_text
+    def text
       quran = Qwerty::Text::Quran.new
-      quran.generate_random_ayah.fetch("en_sahih")
+      quran.parse_quran_trans
+      quran.random_ayah.fetch("en_sahih")
     end
 
     def ots
