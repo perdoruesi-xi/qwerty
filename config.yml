@@ -1,11 +1,27 @@
-type: quran
-language_list:
-  ar_jalalayn:
-    english_name: English
-    native_name:  Ελληνικά
-    dir:
-  sq_nahi:
-    english_name: Shqip
-    native_name: العربية
-    dir:
-
+title: Qwerty
+description: Sholes and Glidden typewriter
+quran:
+  language_list:
+    de_aburida:
+      english_name: Abu Rida
+      translator: Abu Rida Muhammad ibn Ahmad ibn Rassoul
+      language: German
+      ID: de.aburida
+      last_updated: August 19, 2011
+      source: Tanzil.new
+      dir: lib/qwerty/trans/de_aburida
+    en_sahih:
+      english_name: Sahen International
+      translator: Saheeh International
+      language: English
+      last_updated: April 24, 2011
+      source: Tanzil.new
+      dir: lib/qwerty/trans/en_sahih
+    tr_yildirim:
+      english_name: Çeviriyazı
+      translator: Muhammet Abay
+      language: Turkish
+      ID: tr.transliteration
+      last_updated: September 15, 2010
+      source: Tanzil.new
+      dir: lib/qwerty/trans/tr_yildirim

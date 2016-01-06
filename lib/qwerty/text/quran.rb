@@ -17,17 +17,7 @@ module Qwerty
         find_by_surah_num_and_ayah_num(rand(10), rand(20))
       end
 
-      # :ar_jalalayn => {
-      #   :english_name => "English",
-      #   :native_name => "Ελληνικά",
-      #   :dir => "",
-      # }
       def find_by_surah_num_and_ayah_num(surah, ayah)
-        quran_transliterations = [
-          "lib/qwerty/trans/de_aburida",
-          "lib/qwerty/trans/en_sahih",
-          "lib/qwerty/trans/tr_yildirim"
-        ]
         @collection ||= {}
 
         quran_transliterations.each do |t|
@@ -59,11 +49,13 @@ module Qwerty
         trans_list
       end
 
-      private 
+      private
 
-        # Temporary workaround
-        def configuration
-          @configuration ||= Sinatra::Application.settings
+        def quran_transliterations
+          config = Sinatra::Application.settings
+          if config.respond_to?(:quran)
+            config.quran["language_list"].map { |key, value| value["dir"] }
+          end
         end
     end
   end
