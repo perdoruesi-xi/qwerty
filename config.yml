@@ -2,21 +2,22 @@ title: Qwerty
 description: Sholes and Glidden typewriter
 quran:
   language_list:
-    de_aburida:
-      english_name: Abu Rida
+    ar_jalalayn:
+      name: تفسير الجلالين
+      english_name: Jalal ad-Din al-Mahalli and Jalal ad-Din as-Suyuti
       translator: Abu Rida Muhammad ibn Ahmad ibn Rassoul
-      language: German
+      language: Arabic
       source: Tanzil.net
-      dir: /trans/de_aburida
+      dir: /trans/ar_jalalayn
     en_sahih:
       english_name: Sahen International
       translator: Saheeh International
       language: English
       source: Tanzil.net
       dir: /trans/en_sahih
-    tr_yildirim:
-      english_name: Çeviriyazı
-      translator: Muhammet Abay
-      language: Turkish
+    sq_ahmeti:
+      english_name: Sherif Ahmeti
+      translator: Sherif Ahmeti
+      language: Albanian
       source: Tanzil.net
-      dir: /trans/tr_yildirim
+      dir: /trans/sq_ahmeti

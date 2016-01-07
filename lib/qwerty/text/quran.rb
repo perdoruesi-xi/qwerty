@@ -40,10 +40,11 @@ module Qwerty
       end
 
       def get_row
-        @quran.fetch("en_sahih").sample
+        @quran.fetch("en_sahih").shuffle.pop
       end
 
       def random_ayah
+        print "row:#{get_row}" 
         find_by_surah_num_and_ayah_num(get_row[:surah], get_row[:ayah])
       end
 
