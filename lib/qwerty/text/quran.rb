@@ -6,11 +6,11 @@ module Qwerty
       def on_workitem
         parse_quran_trans
         workitem.fields['text']['quran'] = {
+          :source => trans_source,
+          :language_list => language_list,
           :surah => surah,
           :ayah => ayah,
-          :verse => random_ayah,
-          :source => trans_source,
-          :language_list => language_list
+          :verse => random_ayah
         }
         reply
       end
@@ -22,10 +22,12 @@ module Qwerty
           data = read_from_text_file(t)
           @quran[trans_name] = data
         end
+        @quran
       end
 
-      def read_from_text_file(path)
-        IO.readlines(path).map do |line|
+      def read_from_text_file(filename)
+        file = File.join("./lib/qwerty/", filename)
+        IO.readlines(file).map do |line|
           line.chomp!
           next if line.empty?
           a_line = line.split(/\|/)
