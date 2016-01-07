@@ -27,16 +27,22 @@ module Qwerty
 
       def read_from_text_file(filename)
         file = File.join("./lib/qwerty/", filename)
-        IO.readlines(file).map do |line|
-          line.chomp!
-          next if line.empty?
-          a_line = line.split(/\|/)
-          Hash[
-            :surah => a_line[0],
-            :ayah  => a_line[1],
-            :verse => a_line[2]
-          ]
+        if trans_file_exists?(file)
+          IO.readlines(file).map do |line|
+            line.chomp!
+            next if line.empty?
+            a_line = line.split(/\|/)
+            Hash[
+              :surah => a_line[0],
+              :ayah  => a_line[1],
+              :verse => a_line[2]
+            ]
+          end
         end
+      end
+
+      def trans_file_exists?(file)
+        File.exists?(file)
       end
 
       def get_row
@@ -44,7 +50,6 @@ module Qwerty
       end
 
       def random_ayah
-        print "row:#{get_row}" 
         find_by_surah_num_and_ayah_num(get_row[:surah], get_row[:ayah])
       end
 
@@ -86,9 +91,9 @@ module Qwerty
 
       private
 
-        def config
-          @config ||= Sinatra::Application.settings
-        end
+      def config
+        @config ||= Sinatra::Application.settings
+      end
     end
   end
 end
