@@ -21,10 +21,10 @@ get '/' do
   conveyor do
     initial :source
 
-    line(:classifier) do
-      line(:ots)
-      line(:lda)
-      line(:bayes)
+    section(:classifier) do
+      action(:ots)
+      action(:lda)
+      action(:bayes)
     end
   end
 end
