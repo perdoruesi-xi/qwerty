@@ -1,10 +1,11 @@
 require "./lib/qwerty/text"
+require "./lib/qwerty/json_serializer"
 
 module Qwerty
   class Text
     class Quran < Ruote::Participant
       def on_workitem
-        parse_quran_trans
+        process_verse
         workitem.fields['text']['quran'] = {
           :source => trans_source,
           :language_list => language_list,
@@ -15,34 +16,14 @@ module Qwerty
         reply
       end
 
-      def parse_quran_trans
+      def process_verse
         @quran ||= {}
-        quran_transliterations.each do |t|
-          trans_name = t.split(/\//).last
-          data = read_from_text_file(t)
-          @quran[trans_name] = data
+        quran_transliterations.each do |key, value|
+          path = value.fetch("dir")
+          data = read_quran_trans(path)
+          @quran[key] = data
         end
         @quran
-      end
-
-      def read_from_text_file(filename)
-        file = File.join("./lib/qwerty/", filename)
-        if trans_file_exists?(file)
-          IO.readlines(file).map do |line|
-            line.chomp!
-            next if line.empty?
-            a_line = line.split(/\|/)
-            Hash[
-              :surah => a_line[0],
-              :ayah  => a_line[1],
-              :verse => a_line[2]
-            ]
-          end
-        end
-      end
-
-      def trans_file_exists?(file)
-        File.exists?(file)
       end
 
       def get_row
@@ -56,6 +37,7 @@ module Qwerty
       def find_by_surah_num_and_ayah_num(surah, ayah)
         trans_list ||= {}
         @quran.each do |key, v|
+          binding.pry
           verse_t = v.detect { |r| r[:surah] == surah && r[:ayah] == ayah }
           verse_t = verse_t.delete(:verse)
           trans_list[key] = verse_t
@@ -77,7 +59,7 @@ module Qwerty
 
       def quran_transliterations
         if config.respond_to?(:quran)
-          language_list.collect { |_, trans| trans.fetch("dir") }
+          language_list
         end
       end
 
@@ -91,9 +73,32 @@ module Qwerty
 
       private
 
-      def config
-        @config ||= Sinatra::Application.settings
-      end
+        def read_quran_trans(local_fname)
+          file_path = "#{local_fname}.json"
+          if trans_file_exists?(file_path)
+            load_from_json(file_path)
+          else
+            generate_quran_trans(local_fname)
+          end
+        end
+
+        def load_from_json(file_path)
+          data = File.read(file_path)
+          JSON.parse(data)
+        end
+
+        def generate_quran_trans(file_path)
+          json = Qwerty::JsonSerializer.new
+          json.dump_and_load(file_path)
+        end
+
+        def trans_file_exists?(file_path)
+          File.exists?(file_path)
+        end
+
+        def config
+          @config ||= Sinatra::Application.settings
+        end
     end
   end
 end
