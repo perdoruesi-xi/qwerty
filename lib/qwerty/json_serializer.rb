@@ -1,48 +1,61 @@
+require "active_support/all"
+
 module Qwerty
   class JsonSerializer
-    def dump_and_load(file_path)
+    attr_reader :file_path
+
+    def initialize(file_path)
+      @file_path = file_path
+    end
+
+    def dump_and_load
       file_content ||= []
       open(file_path) { |f|
-        f.slice_after(/(\.|\?)\n/).each { |elm|
-          row ||= elm.join('')
-          surah = fetch(row, /(?:^|\n)\d+\|/, sep: ',').chr
-          ayah  = fetch(row, /\|\d+\|/, sep: ',')
-          verse = row.gsub(/\d+\|\d+\|/, '').chomp!
-
-          attr = attributes_list(surah, ayah, verse)
-          file_content.push(attr)
+        f.slice_after(%r{(\.|\?)\n}).each { |lines|
+          values = lines.collect { |line| line.split(%r{\|}) }.transpose
+          file_content.push(
+            transform_hash(values)
+          )
         }
       }
       create_file(file_path, file_content)
       file_content
     end
 
-    def fetch(ary, pattern, sep: '')
-      ary.scan(pattern)
-        .join(sep)
-        .gsub(/\n|\|/, '')
+    def create_file(file_path, content)
+      json = JSON.generate(content)
+      write_to_file(file_path, json)
     end
 
-    def attributes_list(surah, ayah, verse)
-      Hash[
-        :surah => surah,
-        :ayah => ayah,
-        :verse => verse
-      ]
+
+    def write_to_file(file_path, json)
+      local_fname = "#{file_path}.json"
+      File.open(local_fname, "w") do |f|
+        f.write(json)
+      end
     end
 
     private
 
-      def create_file(file_path, content)
-        json = JSON.generate(content)
-        write_to_file(file_path, json)
-      end
+    def transform_hash(ary)
+      %w(surah ayah verse).zip(ary).map do |k, v|
+        [transform_key(k), transform_value(k, v)]
+      end.to_h
+    end
 
-      def write_to_file(file_path, json)
-        local_fname = "#{file_path}.json"
-        File.open(local_fname, "w") do |f|
-          f.write(json.to_json)
-        end
+    def transform_key(key)
+      key.to_sym
+    end
+
+    def transform_value(key, value)
+      case transform_key(key)
+      when :surah
+        value.fetch(0)
+      when :ayah
+        value.join(',')
+      when :verse
+        value.join.squish
       end
+    end
   end
 end
