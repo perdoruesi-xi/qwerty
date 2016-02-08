@@ -1,4 +1,4 @@
-class Line < Thor::Group
+class Section < Thor::Group
   include Thor::Actions
 
   argument :name
@@ -11,7 +11,7 @@ class Line < Thor::Group
 
   def create_lib_file
     class_name = name.downcase
-    path = options[:subclass] ? "templates/subclass_line.tt" : "templates/line.tt"
+    path = options[:subclass] ? "templates/action.tt" : "templates/section.tt"
 
     if options[:subclass]
       subclass = options[:subclass].downcase
@@ -19,8 +19,8 @@ class Line < Thor::Group
       template(path, "lib/qwerty/#{subclass}/#{class_name}.rb")
       insert_into_file "app.rb", :after => "conveyor do" do
         %(
-    line(:#{subclass}) do
-      line(:#{class_name})
+    section(:#{subclass}) do
+      action(:#{class_name})
     end
         )
       end
@@ -28,7 +28,7 @@ class Line < Thor::Group
       template(path, "lib/qwerty/#{class_name}.rb")
       insert_into_file "app.rb", :after => "conveyor do" do
         %(
-    line(:#{class_name})
+    section(:#{class_name})
         )
       end
     end

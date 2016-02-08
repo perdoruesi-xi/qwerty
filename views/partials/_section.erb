@@ -1,10 +1,10 @@
-<% ruote["workitem"]["fields"].each do |line| %>
+<% ruote["workitem"]["fields"].each do |section| %>
   <div class="panel-group" id="panel-group-l" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default" data-toggle="collapse" data-parent="#panel-group-l" href="#<%= line.first %>" aria-expanded="true" aria-controls="collapseOne">
+    <div class="panel panel-default" data-toggle="collapse" data-parent="#panel-group-l" href="#<%= section.first %>" aria-expanded="true" aria-controls="collapseOne">
       <div class="panel-heading">
-        <%= line.first.capitalize %>
+        <%= section.first.capitalize %>
       </div>
-      <div id="<%= line.first %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div id="<%= section.first %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
           <p>Some default panel content here.</p>
         </div>
@@ -19,7 +19,7 @@
               </tr>
             </thead>
             <tbody>
-              <% line[1].each do |key, value| %>
+              <% section[1].each do |key, value| %>
                 <tr>
                   <td>1</td>
                   <td><strong><%= key %></strong></td>
@@ -47,7 +47,7 @@
           </table>
         </div>
       </div>
-      <div class="panel-footer"><%= line[1].keys.join(', ') %></div>
+      <div class="panel-footer"><%= section[1].keys.join(', ') %></div>
     </div>
   </div>
 <% end %>

@@ -12,11 +12,11 @@ Run the bundle command
 
 After you bundle Gemfile, you need to run the generator:
 
-``` thor line Draw```
+``` thor section Draw```
 
 Replace Draw with the class name. 
 
-The generator will create a new line class. The above code will put the following line into ```lib/qwerty/draw.rb```:
+The generator will create a new section class. The above code will put the following line into ```lib/qwerty/draw.rb```:
 
 ```ruby
 # lib/qwerty/draw.rb
@@ -34,19 +34,19 @@ module Qwerty
 end
 ```
 
-Adds a line to app.rb directly after the conveyor block.
+Adds a section to app.rb directly after the conveyor block.
 ```ruby
-line(:draw)
+section(:draw)
 ```
 
 We can see that by invoking the description of this new generator
 ``` 
-thor help line 
+thor help section 
 ```
 
 ```
 Usage:
-  thor line NAME
+  thor section NAME
 
 Options:
   -s, [--subclass=SUBCLASS]
@@ -54,9 +54,9 @@ Options:
                                          # Default: test_unit
 ```
 
---subclass=SUBCLASS - Specify an subclass for this line. If you wish to use this option the recommended command is as follows
+--subclass=SUBCLASS - Specify an subclass for this section. If you wish to use this option the recommended command is as follows
 
-``` thor line Draw --subclass Image```
+``` thor section Draw --subclass Image```
 
 Places a file into lib which contains the specified code.
 
@@ -79,8 +79,8 @@ end
 ```
 Injects a block of code into /app.rb
 ```ruby
-line(:image) do
-  line(:draw)
+section(:image) do
+  action(:draw)
 end
 ```
 
@@ -102,7 +102,7 @@ Start the development server
 │   │   ├── source.rb
 │   │   └── workflow.rb
 │   └── qwerty.rb
-├── line.thor
+├── section.thor
 ├── public
 │   ├── css
 │   │   └── styles.css
@@ -112,8 +112,8 @@ Start the development server
 │   └── js
 │       └── app.js
 ├── templates
-│   ├── line.tt
-│   └── subclass_line.tt
+│   ├── section.tt
+│   └── action.tt
 ├── test
 │   ├── integration
 │   ├── support

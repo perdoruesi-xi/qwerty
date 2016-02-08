@@ -1,4 +1,5 @@
 require 'lda-ruby'
+require './lib/qwerty/classifier'
 
 module Qwerty
   class Classifier

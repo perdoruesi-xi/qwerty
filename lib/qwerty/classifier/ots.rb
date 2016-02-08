@@ -1,4 +1,5 @@
 require 'ots'
+require './lib/qwerty/classifier'
 
 module Qwerty
   class Classifier
