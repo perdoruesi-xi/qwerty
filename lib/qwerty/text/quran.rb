@@ -36,7 +36,7 @@ module Qwerty
         trans_list ||= {}
         translations.each do |k, v|
           verse_t = v.detect { |r| r["surah"] == surah && r["ayah"] == ayah }
-          verse_t = verse_t.delete("verses")
+          verse_t = verse_t.delete("verse")
           trans_list[k] = verse_t
         end
         trans_list
