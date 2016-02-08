@@ -7,9 +7,9 @@
     <div class="form-group form-group-lg">
       <form action="/train_set/new" method="post">
         <%= Rack::Csrf.tag(env) %>
-        <select name="keywords[]" class="js-keywords" multiple="multiple" style="width: 60%">
-          <% keywords.each do |word| %>
-            <option value="<%= word %>"><%= word %></option>
+        <select name="tags[]" class="js-tagged_words" multiple="multiple" style="width: 60%">
+          <% tags.each do |tag| %>
+            <option value="<%= tag %>"><%= tag %></option>
           <% end %>
         </select>
         <input type="hidden" name="text" value="<%= text %>">

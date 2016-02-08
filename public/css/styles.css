@@ -2,10 +2,10 @@
   border-radius: 0px;
 }
 .navbar-inverse{
-  background-color: #2980b9;
-  border-color: #2980b9;
+  background-color: #3A316F;
+  border-color: #3A316F;
 }
-.navbar-inverse .navbar-brand:hover, 
+.navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus{
   color: #ECF0F1;
 }
@@ -23,7 +23,7 @@ footer a{
   color: #858A8B;
 }
 footer a:hover{
-  color: #3498db;
+  color: #3A316F;
 }
 #panel-group-l{
   margin-bottom: 5px;

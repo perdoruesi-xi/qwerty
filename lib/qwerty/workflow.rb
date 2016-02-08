@@ -48,10 +48,11 @@ module Qwerty
     end
     alias_method :initial, :initial_state
 
+    private
+
     def ruote
       @ruote ||= Ruote::Engine.new(Ruote::Worker.new(Ruote::HashStorage.new()))
     end
   end
 end
-# Helper methods can be separately defined in a module
 helpers Qwerty::Workflow

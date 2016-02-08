@@ -1,0 +1,20 @@
+title: Qwerty
+description: Sholes and Glidden typewriter
+quran:
+  language_list:
+    ar_jalalayn:
+      name: تفسير الجلالين
+      english_name: Jalal ad-Din al-Mahalli and Jalal ad-Din as-Suyuti
+      translator: Abu Rida Muhammad ibn Ahmad ibn Rassoul
+      language: Arabic
+      dir: lib/qwerty/trans/ar_jalalayn
+    en_sahih:
+      name: Sahen International
+      translator: Saheeh International
+      language: English
+      dir: lib/qwerty/trans/en_sahih
+    sq_ahmeti:
+      name: Sherif Ahmeti
+      translator: Sherif Ahmeti
+      language: Albanian
+      dir: lib/qwerty/trans/sq_ahmeti

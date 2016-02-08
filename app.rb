@@ -1,14 +1,18 @@
 require "bundler/setup"
 require "sinatra"
+require "sinatra/config_file"
 require "rack/csrf"
 require "ruote"
 require "json"
+require "sinatra/reloader" if development?
+require "./lib/qwerty"
+
+# Load application configuration from YAML file.
+config_file "./config.yml"
 
 Dir.glob(File.join("lib/qwerty", "**", "*.rb")).each do |klass|
   require_relative klass
 end
-
-require "sinatra/reloader" if development?
 
 use Rack::Session::Cookie, :secret => ""
 use Rack::Csrf, :raise => true
@@ -19,7 +23,11 @@ get '/' do
   @ruote.noisy = true
 
   conveyor do
-    initial :source
+    initial :text
+
+    line(:text) do
+      line(:quran)
+    end
 
     line(:classifier) do
       line(:ots)
