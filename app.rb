@@ -23,9 +23,6 @@ get '/' do
   @ruote.noisy = true
 
   conveyor do
-        
-    section(:draw)
-        
     initial :text
 
     section(:text) do
