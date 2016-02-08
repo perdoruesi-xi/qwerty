@@ -8,7 +8,7 @@ module Qwerty
     set :root, "./"
 
     get "/train_set" do
-      verse = quran_text.fetch("verses")
+      verse = quran_text.fetch("verse")
       tagged_words = ots.summary(verse)[:topics]
       erb :train_classifier, locals: { text: verse, tags: tagged_words}
     end
