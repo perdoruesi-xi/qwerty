@@ -2,7 +2,7 @@ require "active_support/inflector"
 
 module Qwerty
   module Workflow
-    def line(class_name, position: nil, &block)
+    def section(class_name, position: nil, &block)
       class_name = class_name.to_s if class_name.is_a?(Symbol)
       @constant_name ||= "Qwerty"
       @constant_name << "::#{class_name.camelize}"
@@ -13,6 +13,7 @@ module Qwerty
     rescue NameError
       halt 500, "#{@constant_name} is not defined. Create a new class to lib/qwerty/#{class_name}.rb"
     end
+    alias_method :action, :section
 
     def register_line(class_name, constant_name, position)
       @ruote.register_participant("#{class_name}_data",
@@ -44,7 +45,7 @@ module Qwerty
     end
 
     def initial_state(class_name)
-      line(class_name, position: 'first')
+      section(class_name, position: 'first')
     end
     alias_method :initial, :initial_state
 
