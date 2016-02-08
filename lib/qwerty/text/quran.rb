@@ -8,7 +8,7 @@ module Qwerty
         workitem.fields['text']['quran'] = {
           :source => "http://tanzil.info",
           :language_list => translations_list,
-          :surah => surah.to_s,
+          :surah => surah,
           :ayah => ayah,
           :verse => verse
         }
