@@ -96,36 +96,63 @@ Start the development server
 ├── Rakefile
 ├── app.rb
 ├── config.ru
+├── config.yml
+├── gitignore
 ├── lib
 │   ├── qwerty
-│   │   ├── assembly.rb
-│   │   ├── source.rb
+│   │   ├── classifier
+│   │   │   ├── bayes.rb
+│   │   │   ├── lda.rb
+│   │   │   ├── ots.rb
+│   │   │   └── train_classifier.rb
+│   │   ├── classifier.rb
+│   │   ├── text
+│   │   │   └── quran.rb
+│   │   ├── text.rb
+│   │   ├── trans
+│   │   │   ├── ar_jalalayn.json
+│   │   │   ├── en_sahih.json
+│   │   │   └── sq_ahmeti.json
 │   │   └── workflow.rb
 │   └── qwerty.rb
-├── section.thor
 ├── public
 │   ├── css
+│   │   ├── bootstrap.min.css
+│   │   ├── select2.min.css
 │   │   └── styles.css
+│   ├── fonts
+│   │   ├── glyphicons-halflings-regular.eot
+│   │   ├── glyphicons-halflings-regular.svg
+│   │   ├── glyphicons-halflings-regular.ttf
+│   │   ├── glyphicons-halflings-regular.woff
+│   │   └── glyphicons-halflings-regular.woff2
 │   ├── img
 │   │   ├── favicon.png
 │   │   └── sinatra.png
 │   └── js
-│       └── app.js
+│       ├── app.js
+│       ├── bootstrap.min.js
+│       └── select2.min.js
+├── section.thor
 ├── templates
-│   ├── section.tt
-│   └── action.tt
+│   ├── action.tt
+│   └── section.tt
 ├── test
-│   ├── integration
 │   ├── support
 │   │   └── rack_test_assertions.rb
 │   ├── test_helper.rb
 │   └── unit
 │       └── app_test.rb
+├── trained.dat
 └── views
     ├── index.erb
-    └── layout.erb
+    ├── layout.erb
+    ├── partials
+    │   ├── _header.erb
+    │   └── _section.erb
+    └── train_classifier.erb
 
-12 directories, 23 files
+16 directories, 45 files
 ```
 ## Notes / Use
 
