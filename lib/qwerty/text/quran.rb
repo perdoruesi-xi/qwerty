@@ -4,7 +4,7 @@ module Qwerty
   class Text
     class Quran < Ruote::Participant
       def on_workitem
-        random_ayah
+        @quran_text = parse_quran_trans
         workitem.fields['text']['quran'] = {
           :source => "http://tanzil.info",
           :language_list => translations_list,
@@ -15,24 +15,24 @@ module Qwerty
         reply
       end
 
-      def random_ayah
-        quran_transliterations
-        @quran = translations.fetch("en_sahih").sample
-      end
-
       def surah
-        @quran.fetch("surah")
+        @quran_text.fetch("surah")
       end
 
       def ayah
-        @quran.fetch("ayah")
+        @quran_text.fetch("ayah")
       end
 
       def verse
-        find_by_surah_num_and_ayah_num(surah, ayah)
+        add_verse(surah, ayah)
       end
 
-      def find_by_surah_num_and_ayah_num(surah, ayah)
+      def parse_quran_trans
+        quran_transliterations
+        translations.fetch("en_sahih").sample
+      end
+
+      def add_verse(surah, ayah)
         trans_list ||= {}
         translations.each do |k, v|
           verse_t = v.detect { |r| r["surah"] == surah && r["ayah"] == ayah }
@@ -43,7 +43,7 @@ module Qwerty
       end
 
       def quran_transliterations
-        translations_list.map do |key, translation|
+        translations_list.collect do |key, translation|
           file_path = translation.fetch("dir")
           translation_text = read_quran_trans(file_path)
 
@@ -65,23 +65,23 @@ module Qwerty
 
       private
 
-      def read_quran_trans(filename)
-        local_fname = "#{filename}.json"
-        if exists?(local_fname)
-          load_translation(local_fname)
-        else
-          raise StandardError, "Translation file missing: #{local_fname}"
+        def read_quran_trans(filename)
+          local_fname = "#{filename}.json"
+          if exists?(local_fname)
+            load_translation(local_fname)
+          else
+            raise StandardError, "Translation file missing: #{local_fname}"
+          end
         end
-      end
 
-      def load_translation(filename)
-        data = File.read(filename)
-        JSON.parse(data)
-      end
+        def load_translation(filename)
+          data = File.read(filename)
+          JSON.parse(data)
+        end
 
-      def exists?(filename)
-        File.exists?(filename)
-      end
+        def exists?(filename)
+          File.exists?(filename)
+        end
     end
   end
 end
