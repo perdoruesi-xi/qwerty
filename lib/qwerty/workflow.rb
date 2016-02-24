@@ -13,14 +13,15 @@ module Qwerty
     rescue NameError
       halt 500, "#{@constant_name} is not defined. Create a new class to lib/qwerty/#{class_name}.rb"
     end
+    alias_method :action, :section
 
     def register_section(class_name, constant_name, position)
-      @ruote.register_participant("#{class_name}_data",
-                                  constant_name.constantize,
-                                  :pos => position)
+      @ruote.register_participant(
+        "#{class_name}_data",
+        constant_name.constantize,
+        :pos => position
+      )
     end
-
-    alias_method :action, :section
 
     def conveyor(options={}, &block)
       pdef_name = options[:name].to_s

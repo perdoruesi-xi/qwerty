@@ -22,8 +22,8 @@ module Qwerty
                          word_tokenizer(text)
                        end
         bayes = bayes(training_set)
-        training_set.each do |t|
-          bayes.train(t, text)
+        training_set.each do |category|
+          bayes.train(category, text)
         end
         dump_to_file("trained.dat", bayes)
         predict(text)

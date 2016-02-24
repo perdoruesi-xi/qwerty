@@ -34,10 +34,9 @@ module Qwerty
 
       def add_verse(surah, ayah)
         trans_list ||= {}
-        translations.each do |k, v|
-          verse_t = v.detect { |r| r["surah"] == surah && r["ayah"] == ayah }
-          verse_t = verse_t.delete("verse")
-          trans_list[k] = verse_t
+        translations.each do |key, trans|
+          verse = trans.detect { |r| r["surah"] == surah && r["ayah"] == ayah }.delete("verse")
+          trans_list[key] = verse
         end
         trans_list
       end
@@ -63,7 +62,7 @@ module Qwerty
         @translations ||= Hash.new
       end
 
-      private
+      # private
 
         def read_quran_trans(filename)
           local_fname = "#{filename}.json"
