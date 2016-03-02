@@ -62,7 +62,7 @@ module Qwerty
         @translations ||= Hash.new
       end
 
-      # private
+      private
 
         def read_quran_trans(filename)
           local_fname = "#{filename}.json"
