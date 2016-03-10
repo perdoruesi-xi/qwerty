@@ -43,7 +43,7 @@ module Qwerty
 
       def quran_transliterations
         translations_list.collect do |key, translation|
-          file_path = translation.fetch("dir")
+          file_path = translation.fetch("path")
           translation_text = read_quran_trans(file_path)
 
           add_translation(key, translation_text)

@@ -27,6 +27,7 @@ get '/' do
 
     section(:text) do
       action(:quran)
+      action(:hadith)
     end
 
     section(:classifier) do
