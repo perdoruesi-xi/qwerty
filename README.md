@@ -2,11 +2,11 @@
 
 Add Ons
 
-Several add-ons are available that adjust the project structure to add support for things like i18n, code metrics, Heroku, etc. Run ```hoboken``` help from the command line for a complete list.
+Several add-ons are available that adjust the project structure to add support for things like i18n, code metrics, Heroku, etc. Run ```hoboken``` from the command line for a complete list as help.
 
 ## Getting Started
 
-Run the bundle command
+Run the bundle command:
 
 ```bundle install```
 
@@ -39,7 +39,7 @@ Adds a section to app.rb directly after the conveyor block.
 section(:draw)
 ```
 
-We can see that by invoking the description of this new generator
+We can see that by invoking the description of this new generator:
 ``` 
 thor help section 
 ```
@@ -84,7 +84,7 @@ section(:image) do
 end
 ```
 
-Start the development server
+Start the development server:
 ```rake server``` 
 
 ### Project Layout
